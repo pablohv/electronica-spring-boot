@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
+				</h4>
+
+				<table class="table table-striped">
+
+					<thead class="thead-dark">
+						<tr>
+							<th>Folio</th>
+							<th>Descripcion</th>
+							<th>Fecha Recepcion</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="reparacion: ${reparaciones}">
+							<td><a th:href="@{/reparacion/ver/} + ${reparacion.id}"
+								th:text="${reparacion.id}" class="btn btn-outline-primary"></a></td>
+							<td th:text="${reparacion.descripcion}"></td>
+							<td th:text="${reparacion.fechaRecepcion}"></td>
+							<td th:text="${reparacion.total}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>

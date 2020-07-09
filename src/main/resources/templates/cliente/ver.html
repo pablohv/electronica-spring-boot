@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/cliente/listar}" class="btn btn-light">&laquo;
+						volver</a> 
+					<a th:href="@{/factura/form/} + ${cliente.id}"
+						class="btn btn-primary">Agregar factura</a> 
+					<a th:href="@{/reparacion/form/} + ${cliente.id}"
+						class="btn btn-primary">Agregar reparacion</a>
+				</h4>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-primary">Detalle
+						del cliente</li>
+					<li class="list-group-item" th:text="${cliente.nombre}"></li>
+					<li class="list-group-item" th:text="${cliente.telefono}"></li>
+				</ul>
+
+				<table class="table table-bordered table-striped my-4" th:if="${not #lists.isEmpty(cliente.facturas)}">
+
+					<thead class="thead-dark">
+						<tr>
+							<th>Folio</th>
+							<th>Descripcion</th>
+							<th>Fecha</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="factura: ${cliente.facturas}">
+							<td><a th:href="@{/factura/ver/} + ${factura.id}"
+								th:text="${factura.id}" class="btn btn-outline-primary"></a></td>
+							<td th:text="${factura.descripcion}"></td>
+							<td th:text="${factura.createAt}"></td>
+							<td th:text="${factura.total}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+
+				<table class="table table-bordered table-striped my-4" th:if="${not #lists.isEmpty(cliente2.reparaciones)}">
+
+					<thead class="thead-dark">
+						<tr>
+							<th>Folio</th>
+							<th>Descripcion</th>
+							<th>Fecha Recepcion</th>
+							<th>A cuenta</th>
+							<th>Total</th>
+							<th>Estatus</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="reparacion: ${cliente2.reparaciones}">
+							<td><a th:href="@{/reparacion/ver/} + ${reparacion.id}"
+								th:text="${reparacion.id}" class="btn btn-outline-primary"></a></td>
+							<td th:text="${reparacion.descripcion}"></td>
+							<td th:text="${reparacion.fechaRecepcion}"></td>
+							<td th:text="${reparacion.aCuenta}"></td>
+							<td th:text="${reparacion.total}"></td>
+							<td th:text="${reparacion.tiempo}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>

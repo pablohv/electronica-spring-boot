@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/cliente/ver/} + ${reparacion.cliente.id}"
+						class="btn btn-light">&laquo; volver al cliente</a> <a
+						th:href="@{/reparacion/listar}" class="btn btn-light">&laquo;
+						volver al listado</a>
+				</h4>
+
+				<form th:action="@{/reparacion/form}" th:object="${reparacion}"
+					method="post">
+
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Cliente</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" th:value="${reparacion.cliente.nombre}"
+								disabled />
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="descripcion" class="col-sm-2 col-form-label">Descripcion</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" th:field="*{descripcion}" /> <small
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}" class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="observacion" class="col-sm-2 col-form-label">Observacion</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="text" th:field="*{observacion}" /> <small
+								th:if="${#fields.hasErrors('observacion')}"
+								th:errors="*{observacion}" class="form-text text-danger"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="total" class="col-sm-2 col-form-label">A cuenta</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="number" th:field="*{aCuenta}" /> <small
+								th:if="${#fields.hasErrors('aCuenta')}" th:errors="*{aCuental}"
+								class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="total" class="col-sm-2 col-form-label">Total</label>
+						<div class="col-sm-6">
+							<input class="form-control" type="number" th:field="*{total}" /> <small
+								th:if="${#fields.hasErrors('total')}" th:errors="*{total}"
+								class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input class="btn btn-secondary" type="submit" th:value="${titulo}" />
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{'/cliente/ver/' + ${reparacion.cliente.id}}"
+						class="btn btn-light">&laquo; volver al cliente</a> <a
+						th:href="@{/reparacion/listar}" class="btn btn-light">&laquo;
+						volver al listado</a>
+				</h4>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-primary"
+						th:text="'Datos del cliente'"></li>
+					<li class="list-group-item" th:text="${reparacion.cliente.nombre}"></li>
+					<li class="list-group-item"
+						th:text="${reparacion.cliente.telefono}"></li>
+				</ul>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-primary"
+						th:text="'Datos reparacion'"></li>
+					<li class="list-group-item" th:text="'Folio: ' + ${reparacion.id}"></li>
+					<li class="list-group-item" th:text="'Descripcion: ' + ${reparacion.descripcion}"></li>
+					<li class="list-group-item" th:text="'Observacion: ' + ${reparacion.observacion}"></li>
+					<li class="list-group-item" th:text="'Fecha recepcion: ' + ${reparacion.fechaRecepcion}"></li>
+					<li class="list-group-item" th:text="'Fecha entrega: ' + ${reparacion.fechaEntrega}"></li>
+					<li class="list-group-item" th:text="'Tiempo reparacion: ' + ${reparacion.tiempo}"></li>
+					<li class="list-group-item" th:text="'A cuenta: ' + ${reparacion.aCuenta}"></li>
+					<li class="list-group-item" th:text="'Total: ' + ${reparacion.total}"></li>
+				</ul>
+
+				<div th:if="${reparacion.fechaEntrega == null}">
+					<a th:href="@{/reparacion/entregar/} + ${reparacion.id}"
+						th:text="entregar" class="btn btn-primary"></a>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>

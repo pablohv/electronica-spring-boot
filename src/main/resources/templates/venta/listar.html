@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
+				</h4>
+
+				<table class="table table-striped">
+
+					<thead class="thead-dark">
+						<tr>
+							<th>Folio</th>
+							<th>Descripcion</th>
+							<th>Fecha</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="factura: ${compras}">
+							<td><a th:href="@{/factura/ver/} + ${factura.id}"
+								th:text="${factura.id}" class="btn btn-outline-primary"></a></td>
+							<td th:text="${factura.descripcion}"></td>
+							<td th:text="${factura.createAt}"></td>
+							<td th:text="${factura.total}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+				
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<h4 class="card-title">
+					<a th:href="@{/producto/listar}" class="btn btn-light">&laquo;
+						volver</a>
+				</h4>
+
+				<form th:action="@{/producto/form}" th:object="${producto}"
+					method="post">
+
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{nombre}" class="form-control" /> 
+							<small th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+								class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="cantidad" class="col-sm-2 col-form-label">Cantidad</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{cantidad}" class="form-control" /> 
+							<small th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"
+								class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="precioVenta" class="col-sm-2 col-form-label">Precio Venta</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{precio}" class="form-control" /> 
+							<small th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"
+								class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="precioCompra" class="col-sm-2 col-form-label">Precio Compra</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{precioCompra}" class="form-control" /> 
+							<small th:if="${#fields.hasErrors('precioCompra')}"
+								th:errors="*{precioCompra}" class="form-text text-danger"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input class="btn btn-secondary" type="submit" th:value="${titulo}" />
+						</div>
+					</div>
+					
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>

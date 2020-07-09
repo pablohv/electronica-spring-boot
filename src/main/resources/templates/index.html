@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/plantilla :: head"></head>
+<body>
+
+	<header th:replace="plantilla/plantilla :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card-deck">
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Selecciona una opcion</h5>
+					<div class="list-group list-group-flush">
+						<a class="list-group-item list-group-item-action list-group-item-light"
+							th:href="@{/cliente/listar}">Clientes</a> <a
+							class="list-group-item list-group-item-action list-group-item-light"
+							th:href="@{/producto/listar}">Productos</a> <a
+							class="list-group-item list-group-item-action list-group-item-light"
+							th:href="@{/compra/listar}">Compras</a> <a
+							class="list-group-item list-group-item-action list-group-item-light"
+							th:href="@{/factura/ventas}">Ventas</a> <a
+							class="list-group-item list-group-item-action list-group-item-light"
+							th:href="@{/reparacion/listar}">Reparaciones</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Productos por agotarse</h5>
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>id</th>
+								<th>nombre</th>
+								<th>disponibles</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="producto: ${productos}">
+								<td th:text="${producto.id}"></td>
+								<td th:text="${producto.nombre}"></td>
+								<td th:text="${producto.cantidad}"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Productos mas vendidos</h5>
+
+					<table class="table table-striped">
+						<thead class="thead-dark">
+							<tr>
+								<th>id</th>
+								<th>nombre</th>
+								<th>vendidos</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="pro: ${objetos}">
+								<td th:text="${pro.id}"></td>
+								<td th:text="${pro.nombre}"></td>
+								<td th:text="${pro.cantidad}"></td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer th:replace="plantilla/plantilla :: footer"></footer>
+
+</body>
+</html>
