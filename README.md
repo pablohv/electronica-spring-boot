@@ -2,7 +2,7 @@
 
 <h3>Tecnologia</h3>
 
-<p>Este pryecto fue desarrollado con Spring Boot<p>
+<p>Este proyecto fue desarrollado con Spring Boot<p>
 
 <p>El front-end fue hecho con bootstrap y se utilizo Thymeleaf</p>
 
