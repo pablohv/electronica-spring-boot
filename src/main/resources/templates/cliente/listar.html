@@ -16,38 +16,40 @@
 						class="btn btn-primary">Agregar cliente</a>
 				</h4>
 
-				<table class="table table-striped">
-
-					<thead class="thead-dark">
-						<tr>
-							<th>id</th>
-							<th>nombre</th>
-							<th>telefono</th>
-							<th>compra</th>
-							<th>reparacion</th>
-							<th>editar</th>
-							<th>eliminar</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr th:each="cliente: ${clientes}">
-							<td><a th:href="@{/cliente/ver/} + ${cliente.id}"
-								th:text="${cliente.id}" class="btn btn-outline-primary"></a></td>
-							<td th:text="${cliente.nombre}"></td>
-							<td th:text="${cliente.telefono}"></td>
-							<td><a th:href="@{/factura/form/} + ${cliente.id}" class="btn btn-secondary"
-								th:text="'agregar factura'"></a></td>
-							<td><a th:href="@{/reparacion/form/} + ${cliente.id}" class="btn btn-secondary"
-								th:text="'agregar reparacion'"></a></td>
-							<td><a th:href="@{/cliente/editar/} + ${cliente.id}"
-								th:text="'editar'" class="btn btn-info"></a></td>
-							<td><a th:href="@{/cliente/eliminar/} + ${cliente.id}"
-								th:text="'eliminar'" class="btn btn-danger"></a></td>
-						</tr>
-					</tbody>
-
-				</table>
+				<div class="table-responsive">
+					<table class="table table-striped">
+	
+						<thead class="thead-dark">
+							<tr>
+								<th>id</th>
+								<th>nombre</th>
+								<th>telefono</th>
+								<th>compra</th>
+								<th>reparacion</th>
+								<th>editar</th>
+								<th>eliminar</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<tr th:each="cliente: ${clientes}">
+								<td><a th:href="@{/cliente/ver/} + ${cliente.id}"
+									th:text="${cliente.id}" class="btn btn-outline-primary"></a></td>
+								<td th:text="${cliente.nombre}"></td>
+								<td th:text="${cliente.telefono}"></td>
+								<td><a th:href="@{/factura/form/} + ${cliente.id}" class="btn btn-secondary"
+									th:text="'agregar factura'"></a></td>
+								<td><a th:href="@{/reparacion/form/} + ${cliente.id}" class="btn btn-secondary"
+									th:text="'agregar reparacion'"></a></td>
+								<td><a th:href="@{/cliente/editar/} + ${cliente.id}"
+									th:text="'editar'" class="btn btn-info"></a></td>
+								<td><a th:href="@{/cliente/eliminar/} + ${cliente.id}"
+									th:text="'eliminar'" class="btn btn-danger"></a></td>
+							</tr>
+						</tbody>
+	
+					</table>
+				</div>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 			</div>
 		</div>

@@ -15,28 +15,31 @@
 					<a th:href="@{/}" class="btn btn-light">&laquo; volver</a>
 				</h4>
 
-				<table class="table table-striped">
-
-					<thead class="thead-dark">
-						<tr>
-							<th>Folio</th>
-							<th>Descripcion</th>
-							<th>Fecha Recepcion</th>
-							<th>Total</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						<tr th:each="reparacion: ${reparaciones}">
-							<td><a th:href="@{/reparacion/ver/} + ${reparacion.id}"
-								th:text="${reparacion.id}" class="btn btn-outline-primary"></a></td>
-							<td th:text="${reparacion.descripcion}"></td>
-							<td th:text="${reparacion.fechaRecepcion}"></td>
-							<td th:text="${reparacion.total}"></td>
-						</tr>
-					</tbody>
-
-				</table>
+				<div class="table-responsive">
+					<table class="table table-striped">
+	
+						<thead class="thead-dark">
+							<tr>
+								<th>Folio</th>
+								<th>Descripcion</th>
+								<th>Fecha Recepcion</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+	
+						<tbody>
+							<tr th:each="reparacion: ${reparaciones}">
+								<td><a th:href="@{/reparacion/ver/} + ${reparacion.id}"
+									th:text="${reparacion.id}" class="btn btn-outline-primary"></a></td>
+								<td th:text="${reparacion.descripcion}"></td>
+								<td th:text="${reparacion.fechaRecepcion}"></td>
+								<td th:text="${reparacion.total}"></td>
+							</tr>
+						</tbody>
+	
+					</table>
+				</div>
+				
 				<nav th:replace="paginator-nav :: paginator"></nav>
 			</div>
 		</div>
